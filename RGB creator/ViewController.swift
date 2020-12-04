@@ -8,12 +8,48 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var colorView: UIView!
+    
+    @IBOutlet var labelForRed: UILabel!
+    @IBOutlet var labelForGreen: UILabel!
+    @IBOutlet var labelForBlue: UILabel!
 
+    @IBOutlet var sliderForRed: UISlider!
+    @IBOutlet var sliderForGreen: UISlider!
+    @IBOutlet var sliderForBlue: UISlider!
+
+    
     override func viewDidLoad() {
+        colorView.layer.cornerRadius = 10
+        colorView.layer.borderWidth = 3
+        colorView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        
+        labelForRed.text = String(Int(sliderForRed.value))
+        labelForGreen.text = String(Int(sliderForGreen.value))
+        labelForBlue.text = String(Int(sliderForBlue.value))
+        
+        sliderForRed.value = Float(0)
+        sliderForRed.minimumValue = Float(0)
+        sliderForRed.maximumValue = Float(255)
+        
+        sliderForGreen.value = Float(0)
+        sliderForGreen.minimumValue = Float(0)
+        sliderForGreen.maximumValue = Float(255)
+        
+        sliderForBlue.value = Float(0)
+        sliderForBlue.minimumValue = Float(0)
+        sliderForBlue.maximumValue = Float(255)
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func sliderAction() {
+        labelForRed.text = String(Int(sliderForRed.value))
+        labelForGreen.text = String(Int(sliderForGreen.value))
+        labelForBlue.text = String(Int(sliderForBlue.value))
+        colorView.backgroundColor = UIColor(red: CGFloat(sliderForRed.value) / 255, green: CGFloat(sliderForGreen.value) / 255, blue: CGFloat(sliderForBlue.value) / 255, alpha: 1)
+    }
 }
 
