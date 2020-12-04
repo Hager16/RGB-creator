@@ -14,20 +14,23 @@ class ViewController: UIViewController {
     @IBOutlet var labelForRed: UILabel!
     @IBOutlet var labelForGreen: UILabel!
     @IBOutlet var labelForBlue: UILabel!
-
+    @IBOutlet var labelForAlpha: UILabel!
+    
     @IBOutlet var sliderForRed: UISlider!
     @IBOutlet var sliderForGreen: UISlider!
     @IBOutlet var sliderForBlue: UISlider!
-
+    @IBOutlet var sliderForAlpha: UISlider!
+    
     
     override func viewDidLoad() {
         colorView.layer.cornerRadius = 10
         colorView.layer.borderWidth = 3
-        colorView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        colorView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0)
         
         labelForRed.text = String(Int(sliderForRed.value))
         labelForGreen.text = String(Int(sliderForGreen.value))
         labelForBlue.text = String(Int(sliderForBlue.value))
+        labelForAlpha.text = String(sliderForAlpha.value)
         
         sliderForRed.value = Float(0)
         sliderForRed.minimumValue = Float(0)
@@ -41,6 +44,10 @@ class ViewController: UIViewController {
         sliderForBlue.minimumValue = Float(0)
         sliderForBlue.maximumValue = Float(255)
         
+        sliderForAlpha.value = Float(0)
+        sliderForAlpha.minimumValue = Float(0)
+        sliderForAlpha.maximumValue = Float(1)
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -49,7 +56,8 @@ class ViewController: UIViewController {
         labelForRed.text = String(Int(sliderForRed.value))
         labelForGreen.text = String(Int(sliderForGreen.value))
         labelForBlue.text = String(Int(sliderForBlue.value))
-        colorView.backgroundColor = UIColor(red: CGFloat(sliderForRed.value) / 255, green: CGFloat(sliderForGreen.value) / 255, blue: CGFloat(sliderForBlue.value) / 255, alpha: 1)
+        labelForAlpha.text = String(format: "%.2f", (sliderForAlpha.value))
+        colorView.backgroundColor = UIColor(red: CGFloat(sliderForRed.value) / 255, green: CGFloat(sliderForGreen.value) / 255, blue: CGFloat(sliderForBlue.value) / 255, alpha: CGFloat(sliderForAlpha.value))
     }
 }
 
