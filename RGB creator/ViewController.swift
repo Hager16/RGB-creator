@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ViewControllerDelegate: AnyObject {
+    func changeColor(color: UIColor)
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet var colorView: UIView!
@@ -21,6 +25,9 @@ class ViewController: UIViewController {
     @IBOutlet var sliderForBlue: UISlider!
     @IBOutlet var sliderForAlpha: UISlider!
     
+    @IBOutlet var doneButton: UIButton!
+    
+    weak var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         colorView.layer.cornerRadius = 10
@@ -58,6 +65,10 @@ class ViewController: UIViewController {
         labelForBlue.text = String(Int(sliderForBlue.value))
         labelForAlpha.text = String(format: "%.2f", (sliderForAlpha.value))
         colorView.backgroundColor = UIColor(red: CGFloat(sliderForRed.value) / 255, green: CGFloat(sliderForGreen.value) / 255, blue: CGFloat(sliderForBlue.value) / 255, alpha: CGFloat(sliderForAlpha.value))
+    }
+    
+    @IBAction func doneButtonPressed() {
+        delegate?.changeColor(color: colorView.backgroundColor ?? .systemGray4)
     }
 }
 
