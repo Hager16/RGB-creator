@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     @IBOutlet var sliderForBlue: UISlider!
     @IBOutlet var sliderForAlpha: UISlider!
     
-    @IBOutlet var doneButton: UIButton!
     
     weak var delegate: ViewControllerDelegate?
     
