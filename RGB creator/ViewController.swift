@@ -25,6 +25,10 @@ class ViewController: UIViewController {
     @IBOutlet var sliderForBlue: UISlider!
     @IBOutlet var sliderForAlpha: UISlider!
     
+    @IBOutlet var textFieldForRed: UITextField!
+    @IBOutlet var textFieldForGreen: UITextField!
+    @IBOutlet var textFieldForBlue: UITextField!
+    @IBOutlet var textFieldForAlpha: UITextField!
     
     weak var delegate: ViewControllerDelegate?
     
@@ -66,8 +70,15 @@ class ViewController: UIViewController {
         colorView.backgroundColor = UIColor(red: CGFloat(sliderForRed.value) / 255, green: CGFloat(sliderForGreen.value) / 255, blue: CGFloat(sliderForBlue.value) / 255, alpha: CGFloat(sliderForAlpha.value))
     }
     
+    
     @IBAction func doneButtonPressed() {
         delegate?.changeColor(color: colorView.backgroundColor ?? .systemGray4)
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+}
