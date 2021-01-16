@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         labelForRed.text = String(Int(sliderForRed.value))
         labelForGreen.text = String(Int(sliderForGreen.value))
         labelForBlue.text = String(Int(sliderForBlue.value))
-        labelForAlpha.text = String(sliderForAlpha.value)
+        labelForAlpha.text = String(Int(sliderForAlpha.value))
         
         sliderForRed.value = Float(0)
         sliderForRed.minimumValue = Float(0)
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         sliderForBlue.minimumValue = Float(0)
         sliderForBlue.maximumValue = Float(255)
         
-        sliderForAlpha.value = Float(0)
+        sliderForAlpha.value = Float(1)
         sliderForAlpha.minimumValue = Float(0)
         sliderForAlpha.maximumValue = Float(1)
         
